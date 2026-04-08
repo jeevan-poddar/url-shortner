@@ -8,7 +8,9 @@ const page = () => {
   const [shortenedURl, setShortenedURl] = useState("");
     const handleCopy = async () => {
       try {
-        await navigator.clipboard.writeText(`${process.env.host}/shortner/${shortenedURl}`);
+        await navigator.clipboard.writeText(
+          `${process.env.NEXT_PUBLIC_HOST}/shortner/${shortenedURl}`,
+        );
         alert("Copied to clipboard!");
       } catch (err) {
         console.log("Failed to copy!", err);
@@ -99,16 +101,18 @@ const page = () => {
           <div className=" p-2 bg-white rounded-md border border-gray-300">
             <p className=" text-lg font-semibold">Shortened URL of {longUrl}</p>
             <a
-              href={`${process.env.host}/shortner/${shortenedURl}`}
+              href={`${process.env.NEXT_PUBLIC_HOST}/shortner/${shortenedURl}`}
               target="_blank"
               rel="noopener noreferrer"
               className=" text-blue-500 hover:underline"
             >
-              ${process.env.host}/shortner/{shortenedURl}
+              ${process.env.NEXT_PUBLIC_HOST}/shortner/{shortenedURl}
             </a>
             <div className=" mt-2">
-              <button className=" bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded"
-              onClick={handleCopy}>
+              <button
+                className=" bg-gray-200 hover:bg-gray-300 text-gray-800 font-bold py-2 px-4 rounded"
+                onClick={handleCopy}
+              >
                 Copy URL
               </button>
             </div>
